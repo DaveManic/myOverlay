@@ -1,29 +1,26 @@
 //$(document).ready(function () {
-//document.getElementById=('myOffer').innerHTML = 'test';
-	
-	
-    /*$('#myVideo').click(function(){
-       // document.write("<iframe width=\"420\" height=\"315\" src=\"https://www.youtube.com/watch?v=JtElLz_HaLY\" frameborder=\"0\" allowfullscreen></iframe>");
-        });
-        //var myVideo = VideoDB.query(url:currentURL) //this */
+// I haven't turned on jquery yet....
+
     currentUrl = function() {
-		var tabURL;
+		var tabURL;// this is supposed to make the variable tabURL exist outside of the chrom.tabs.getSelected function
         chrome.tabs.getSelected(null,function(tab) {
-            return tab.url;
-            console.log('inside '+tabURL);
+            tabURL = tab.url;// this is SUPPOSED to set tabURL to tab.url
+            console.log('inside '+tabURL);//tabURL prints here
             });
-            console.log('outside '+tabURL);
-         //return tabURL;
+            console.log('outside '+tabURL);//tabURL does NOT print here
+            return tabURL; //a string is not returned
         };
         
     
     /*function settupTopThree(){
+    //This function is supposed to select from a series of videos returned by myVidSelector. 
         myUrl = currentUrl();
         myTopThreeVids = myVidSelector(myUrl);
         return myTopThreeVids;
         }*/
     function myVidSelector(url){
-		console.log('we are testing the url '+url);
+    	//currently, myVidSelector only returns 1 video per url, and only has 1 url. In the future, it will retrieve multiple vidID's froma  DB full of urls. The DB will be able to be updated by users.
+		console.log('we are testing the url '+url);//tests to see if url is passed along to myVidSelector
         switch(url){
             case 'https://en.wikipedia.org/wiki/Charlie_Resnick':
                 return 'DcN9YG77wRA';
@@ -45,10 +42,8 @@
 	 * 	and https://developers.google.com/youtube/iframe_api_reference
      * http://stackoverflow.com/questions/18990317/showing-a-youtube-video-in-a-google-chrome-extension
      * http://stackoverflow.com/questions/17601615/the-chrome-extension-popup-is-not-working-click-events-are-not-handled/17612988#17612988*/	
-/*	function embedVideo(tabURL){
-	    vidURL = myVidSelector(tabURL);
-	    document.write("<iframe width=\"420\" height=\"315\" src=\"" + vidURL + "\" frameborder=\"0\" allowfullscreen></iframe>");//this method of adding videos is not preferred by current browser architecture.
-    	}*/
+////////////////////////////////////////////////////////////////
+////////////////////////A LOT OF THE FOLLOWING IS COPPIED DIRECTLY FROM GOOGLE
 // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
 
@@ -63,7 +58,7 @@
         player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId: getVideoID(),//'M7lc1UVf-VE',
+          videoId: getVideoID(),//'M7lc1UVf-VE', // I want this to be a dynamic variable
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -95,4 +90,4 @@
 
 
 
-//});
+//}); //this is the end of the jquery function
