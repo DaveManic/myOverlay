@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+
+  "name": "myOverlay",
+  "description": "This extension will create a popout that links to a video specific to the current webpage",
+  "version": "1.0",
+
+  "permissions": [
+    "tabs",
+    "https://*.youtube.com/",
+    "https://*.ytimg.com/"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+   "content_security_policy": 
+      "script-src 'self' https://*.youtube.com https://*.ytimg.com; object-src 'self'"
+}

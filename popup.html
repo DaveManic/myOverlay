@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Getting Started Extension's Popup</title>
+    <style>
+      body {
+        min-width: 357px;
+        overflow-x: hidden;
+      }
+
+      img {
+        margin: 5px;
+        border: 2px solid black;
+        vertical-align: middle;
+        width: 75px;
+        height: 75px;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: http://developer.chrome.com/extensions/contentSecurityPolicy.html
+     -->
+     <link rel="stylesheet" href="resources/jquery-ui.css">
+     <link rel="stylesheet" href="resources/jquery.ui.theme.css">
+     <link rel="stylesheet" href="resources/jquery.ui.dialog.css">
+     <script src="resources/jquery-1.4.4.js"></script>
+     <script src="resources/jquery-ui.js"></script>
+     <script src="resources/jquery.ui.widget.js"></script>
+     <script src="resources/jquery.ui.button.js"></script>
+     <script src="resources/jquery.ui.dialog.js"></script> 
+     
+     <link rel="stylesheet" type="text/css" href="popup.css">
+    <script src="popup.js"></script>
+  </head>
+  <body>
+	  <!-- I am trying to embed a dynamic video defined in popup.js as myVideo 
+	  -->
+	  <!--<iframe width="420" height="315" src="https://www.youtube.com/watch?v=JtElLz_HaLY" frameborder="0" allowfullscreen></iframe>
+      -->
+	<div id='player'>Video</div><br>
+	<div id='myOffer'>Help support us...</div><br>
+	<div id='myRating'>Rate this video</div><br>
+	<div id='myUpload'>Click here if you have a better video!</div>
+
+  </body>
+</html> 
+
+

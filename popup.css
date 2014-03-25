@@ -1,0 +1,30 @@
+
+ div {
+    height:50px;
+    width:500px;
+    border-radius:5px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    font-family: Verdana, Arial, Sans-Serif;
+    margin-right:5px;
+}
+#myVideo {
+    background-color:red;
+    
+}
+#myOffer {
+    background-color:#008800;
+    color:white;
+}
+#myChoice {
+    background-color:#008800;
+    color:#FFFFFF;
+}
+#myRating {
+	background-color:blue;
+}
+#myUpload {
+	background-color:purple;
+}
+
