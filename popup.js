@@ -1,15 +1,16 @@
 //$(document).ready(function () {
-var vidID;
-chrome.tabs.getSelected(null, function(tab) {
-    vidID = tab.url; 
+var currentURL;// Defines vidID
+
+chrome.tabs.getSelected(null, function(tab) {//Captures url for
+    currentURL = tab.url; 
     console.log(vidID);   
     });   
 
 
     function myVidSelector(){
     	//currently, myVidSelector only returns 1 video per url, and only has 1 url. In the future, it will retrieve multiple vidID's froma  DB full of urls. The DB will be able to be updated by users.
-		
-        switch(vidID){
+		//read http://stackoverflow.com/questions/5769081/connecting-to-db-from-a-chrome-extension
+        switch(currentURL){
             case 'https://en.wikipedia.org/wiki/Charlie_Resnick':
                 return 'DcN9YG77wRA';
             case 'http://www.w3schools.com/js/default.asp':
@@ -34,7 +35,7 @@ chrome.tabs.getSelected(null, function(tab) {
         player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId: myVidSelector(),//'M7lc1UVf-VE', // I want this to be a dynamic variable
+          videoId: myVidSelector(),
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
