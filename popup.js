@@ -1,15 +1,9 @@
 //$(document).ready(function () {
 // I haven't turned on jquery yet....
-
-    currentUrl = function() {
-		var tabURL;// this is supposed to make the variable tabURL exist outside of the chrom.tabs.getSelected function
-        chrome.tabs.getSelected(null,function(tab) {
-            tabURL = tab.url;// this is SUPPOSED to set tabURL to tab.url
-            console.log('inside '+tabURL);//tabURL prints here
-            });
-            console.log('outside '+tabURL);//tabURL does NOT print here
-            return tabURL; //a string is not returned
-        };
+var vidID;
+chrome.tabs.getSelected(null, function(tab) {
+    getVideoID(tab.url);    
+    });   
         
     
     /*function settupTopThree(){
@@ -30,13 +24,13 @@
                 return 'Sorry, no one has made a video yet. Upload your own now!';
             }
 		}
-	function getVideoID(){
-		console.log(currentUrl());
-		var url = currentUrl();
-		console.log(url);
-		var vidID = myVidSelector(url);
+	function getVideoID(url){
+	//	console.log(currentUrl());
+	//	var url = currentUrl();
+	//	console.log(url);
+		vidID = myVidSelector(url);
 		console.log(vidID);
-		return vidID;
+	//	return vidID;
 	};	
 	/*see this http://stackoverflow.com/questions/17001191/youtube-api-player-chrome-extension
 	 * 	and https://developers.google.com/youtube/iframe_api_reference
@@ -58,7 +52,7 @@
         player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId: getVideoID(),//'M7lc1UVf-VE', // I want this to be a dynamic variable
+          videoId: vidID,//'M7lc1UVf-VE', // I want this to be a dynamic variable
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
