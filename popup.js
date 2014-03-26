@@ -2,7 +2,8 @@
 // I haven't turned on jquery yet....
 var vidID;
 chrome.tabs.getSelected(null, function(tab) {
-    getVideoID(tab.url);    
+    vidID = tab.url; 
+    console.log(vidID);   
     });   
         
     
@@ -12,10 +13,10 @@ chrome.tabs.getSelected(null, function(tab) {
         myTopThreeVids = myVidSelector(myUrl);
         return myTopThreeVids;
         }*/
-    function myVidSelector(url){
+    function myVidSelector(){
     	//currently, myVidSelector only returns 1 video per url, and only has 1 url. In the future, it will retrieve multiple vidID's froma  DB full of urls. The DB will be able to be updated by users.
-		console.log('we are testing the url '+url);//tests to see if url is passed along to myVidSelector
-        switch(url){
+		
+        switch(vidID){
             case 'https://en.wikipedia.org/wiki/Charlie_Resnick':
                 return 'DcN9YG77wRA';
             case 'http://www.w3schools.com/js/default.asp':
@@ -24,12 +25,12 @@ chrome.tabs.getSelected(null, function(tab) {
                 return 'Sorry, no one has made a video yet. Upload your own now!';
             }
 		}
-	function getVideoID(url){
+	function getVideoID(){
 	//	console.log(currentUrl());
 	//	var url = currentUrl();
 	//	console.log(url);
 		vidID = myVidSelector(url);
-		console.log(vidID);
+		//console.log(vidID);
 	//	return vidID;
 	};	
 	/*see this http://stackoverflow.com/questions/17001191/youtube-api-player-chrome-extension
@@ -52,7 +53,7 @@ chrome.tabs.getSelected(null, function(tab) {
         player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId: vidID,//'M7lc1UVf-VE', // I want this to be a dynamic variable
+          videoId: myVidSelector(),//'M7lc1UVf-VE', // I want this to be a dynamic variable
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
