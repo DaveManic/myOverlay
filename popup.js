@@ -1,15 +1,17 @@
-$(document).ready(function () {	
-	}); //this is the end of the jquery function
-var vidID;
+//$(document).ready(function () {
+// I haven't turned on jquery yet....
+//}); //this is the end of the jquery function
+
+var currentURL;
 chrome.tabs.getSelected(null, function(tab) {
-    vidID = tab.url; 
-    console.log(vidID);   
-    });
- 
-function myVidSelector(){
+    currentURL = tab.url; 
+    console.log(currentURL);   
+    });   
+
+    function myVidSelector(){
     	//currently, myVidSelector only returns 1 video per url, and only has 1 url. In the future, it will retrieve multiple vidID's froma  DB full of urls. The DB will be able to be updated by users.
 		
-        switch(vidID){
+        switch(currentURL){
             case 'https://en.wikipedia.org/wiki/Charlie_Resnick':
                 return 'DcN9YG77wRA';
             case 'http://www.w3schools.com/js/default.asp':
@@ -18,11 +20,12 @@ function myVidSelector(){
                 return 'Sorry, no one has made a video yet. Upload your own now!';
             }
 		}
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
-	/*see this http://stackoverflow.com/questions/17001191/youtube-api-player-chrome-extension
-	 * 	and https://developers.google.com/youtube/iframe_api_reference
-     * http://stackoverflow.com/questions/18990317/showing-a-youtube-video-in-a-google-chrome-extension
-     * http://stackoverflow.com/questions/17601615/the-chrome-extension-popup-is-not-working-click-events-are-not-handled/17612988#17612988*/	
+
+
+////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 ////////////////////////A LOT OF THE FOLLOWING IS COPPIED DIRECTLY FROM GOOGLE
 // 2. This code loads the IFrame Player API code asynchronously.
@@ -66,7 +69,6 @@ function myVidSelector(){
       function stopVideo() {
         player.stopVideo();
       }
-
 
 
 
