@@ -1,16 +1,24 @@
-//$(document).ready(function () {
-var currentURL;// Defines vidID
+$(document).ready(function () {
+	
+	}); //this is the end of the jquery function
 
-chrome.tabs.getSelected(null, function(tab) {//Captures url for
-    currentURL = tab.url; 
+var vidID;
+chrome.tabs.getSelected(null, function(tab) {
+    vidID = tab.url; 
     console.log(vidID);   
     });   
-
-
+        
+    
+    /*function settupTopThree(){
+    //This function is supposed to select from a series of videos returned by myVidSelector. 
+        myUrl = currentUrl();
+        myTopThreeVids = myVidSelector(myUrl);
+        return myTopThreeVids;
+        }*/
     function myVidSelector(){
     	//currently, myVidSelector only returns 1 video per url, and only has 1 url. In the future, it will retrieve multiple vidID's froma  DB full of urls. The DB will be able to be updated by users.
-		//read http://stackoverflow.com/questions/5769081/connecting-to-db-from-a-chrome-extension
-        switch(currentURL){
+		
+        switch(vidID){
             case 'https://en.wikipedia.org/wiki/Charlie_Resnick':
                 return 'DcN9YG77wRA';
             case 'http://www.w3schools.com/js/default.asp':
@@ -18,8 +26,20 @@ chrome.tabs.getSelected(null, function(tab) {//Captures url for
             default:
                 return 'Sorry, no one has made a video yet. Upload your own now!';
             }
-	}
-//////////////////////////////////////////////////////////////
+		}
+	function getVideoID(){
+	//	console.log(currentUrl());
+	//	var url = currentUrl();
+	//	console.log(url);
+		vidID = myVidSelector(url);
+		//console.log(vidID);
+	//	return vidID;
+	};	
+	/*see this http://stackoverflow.com/questions/17001191/youtube-api-player-chrome-extension
+	 * 	and https://developers.google.com/youtube/iframe_api_reference
+     * http://stackoverflow.com/questions/18990317/showing-a-youtube-video-in-a-google-chrome-extension
+     * http://stackoverflow.com/questions/17601615/the-chrome-extension-popup-is-not-working-click-events-are-not-handled/17612988#17612988*/	
+////////////////////////////////////////////////////////////////
 ////////////////////////A LOT OF THE FOLLOWING IS COPPIED DIRECTLY FROM GOOGLE
 // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -35,7 +55,7 @@ chrome.tabs.getSelected(null, function(tab) {//Captures url for
         player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId: myVidSelector(),
+          videoId: myVidSelector(),//'M7lc1UVf-VE', // I want this to be a dynamic variable
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -67,4 +87,4 @@ chrome.tabs.getSelected(null, function(tab) {//Captures url for
 
 
 
-//}); //this is the end of the jquery function
+
