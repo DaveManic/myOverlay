@@ -22,7 +22,14 @@ chrome.tabs.getSelected(null, function(tab) {
 		}
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
-
+/* getHtmlContent will capture the html of the current page visible by users tab
+ * 
+ * myParser will parse for data throughout the html gathered by getHtmlContent (first we will try and capture <title>**WHATEVER**</title>
+ * */
+ 
+ function getHtmlContent(){
+ 
+ }
 
 
 ////////////////////////////////////////////////////////////////
